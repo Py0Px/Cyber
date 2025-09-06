@@ -1,0 +1,40 @@
+You've discovered Alex Morgan is connected to RivalTech and has been conducting fake review campaigns against TechFlow. Now you need to map Alex's complete digital footprint across social media platforms to understand the full scope of this operation and find evidence of coordination with other actors.
+
+
+Question 1: What is the real name of the person behind the TechReviewer2024 account across all platforms? 
+
+Answer: Alex Morgan.
+
+Question 2: Which company did Alex Morgan previously work for according to their professional background?
+
+Answer: RivalTech Inc.
+
+Question 3: What is the operation codename mentioned in the ForumHub coordination post?
+
+Answer: operation_social_storm_2024.
+
+Question 4: In which month and year were most of the suspicious reviewer accounts created?
+
+Answer: February 2024.
+
+Question 5: What product is being specifically targeted in the negative review campaign?
+
+Answer: XyloPhone Pro.
+
+Question 6: What role does TechReviewer2024 have in the TechReviews subreddit on ForumHub?
+
+Answer: Moderator.
+
+Question 7: What is Alex Morgan's educational background according to ConnectPro?
+
+Answer: University of California, Berkeley.
+
+Question 8: How many connections does Alex Morgan have on ConnectPro?
+
+Answer: 89.
+
+Question 9: What is the total post karma that u/TechReviewer2024 has accumulated on ForumHub?
+
+Answer: 1247.
+
+FLAG: HTB{alexmorgan_operationsocialstorm2024_february2024}.

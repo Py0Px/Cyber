@@ -1,0 +1,23 @@
+All the coolest ghosts in town are going to a Haunted Houseparty - can you prove you deserve to get in?
+
+Download The Zip File And Extract It Using Password: hackthebox.
+
+We Get Binary File ./pass That Requries a Password To Open, We Use: strings.
+
+>> strings pass 
+PTE1
+u3UH
+Welcome to the 
+[1;3mSPOOKIEST
+[0m party of the year.
+Before we let you in, you'll need to give us the password: 
+s3cr3t_p455_f0r_gh05t5_4nd_gh0ul5
+Welcome inside!
+You're not a real ghost; clear off!
+;*3$"
+
+Now We Execute The File: ./pass With The Password: s3cr3t_p455_f0r_gh05t5_4nd_gh0ul5
+
+To Get The Flag: Welcome inside!
+HTB{un0bfu5c4t3d_5tr1ng5}
+

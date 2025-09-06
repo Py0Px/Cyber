@@ -1,0 +1,5 @@
+We Need To Collect All 20 Cubes, However In Game There Are Only 6 Cubes?!
+
+Use Cheat Engine Scan The Values And Modify It to 20. 
+
+FLAG: HTB{CU83_M4DN355_UNM4DD3N3D}
