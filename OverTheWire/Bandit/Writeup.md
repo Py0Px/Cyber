@@ -1,3 +1,4 @@
+```
 This Is My Writeup For The OverTheWire Bandit Wargame
 
 ssh bandit0@bandit.labs.overthewire.org -p 2220 // connect to the server using ssh (password is bandit0)
@@ -37,6 +38,6 @@ The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 
 ##Bandit3 ---> Bandit4
-
+```
 
   
