@@ -141,6 +141,63 @@ The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 ```
 The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)
 
+//first create workplace with premissions
+bandit12@bandit:~$ cd /tmp
+bandit12@bandit:/tmp$ mkdir my_workplace
+bandit12@bandit:/tmp$ cd my_workplace/
+
+//copy the data.txt file into workplace
+
+bandit12@bandit:/tmp/my_workplace$ cp /home/bandit12/data.txt .
+bandit12@bandit:/tmp/my_workplace$ ls
+data.txt
+bandit12@bandit:/tmp/my_workplace$ file data.txt
+data.txt: ASCII text
+
+//they help us by saying the data.txt file is a hexdump so we use xxd:
+
+bandit12@bandit:/tmp/my_workplace$ xxd -h
+Usage:
+       xxd [options] [infile [outfile]]
+    or
+       xxd -r [-s [-]offset] [-c cols] [-ps] [infile [outfile]]
+Options:
+    -r          reverse operation: convert (or patch) hexdump into binary.
+
+bandit12@bandit:/tmp/my_workplace$ xxd -r data.txt > stage1
+bandit12@bandit:/tmp/my_workplace$ ls
+data.txt  stage1
+bandit12@bandit:/tmp/my_workplace$ file stage1
+stage1: gzip compressed data, was "data2.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 572
+
+//now we can see it is gzip compressed data so we use gzip -d (change name to stage1.gz first):
+
+bandit12@bandit:/tmp/my_workplace$ mv stage1 stage1.gz
+bandit12@bandit:/tmp/my_workplace$ gzip -h
+Usage: gzip [OPTION]... [FILE]...
+Compress or uncompress FILEs (by default, compress FILES in-place).
+  -d, --decompress  decompress
+
+bandit12@bandit:/tmp/my_workplace$ gzip -d stage1.gz
+bandit12@bandit:/tmp/my_workplace$ ls
+data.txt  stage1
+
+bandit12@bandit:/tmp/my_workplace$ file stage1
+stage1: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/my_workplace$ mv stage1 stage1.bz
+bandit12@bandit:/tmp/my_workplace$ bunzip2 stage1.bz
+bandit12@bandit:/tmp/my_workplace$ file stage1
+stage1: gzip compressed data, was "data4.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 20480
+//back to gzip again:
+bandit12@bandit:/tmp/my_workplace$ mv stage1 stage1.gz
+bandit12@bandit:/tmp/my_workplace$ gzip -d stage1.gz
+
+bandit12@bandit:/tmp/my_workplace$ file stage1
+stage1: POSIX tar archive (GNU)
+//now we see it is tar archive, so we use tar -xf (extract with force):
+
+ 
+
 
 ```
 # Level 13 ---> Level 14
