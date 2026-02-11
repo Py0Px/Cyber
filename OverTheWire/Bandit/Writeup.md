@@ -195,13 +195,55 @@ bandit12@bandit:/tmp/my_workplace$ gzip -d stage1.gz
 bandit12@bandit:/tmp/my_workplace$ file stage1
 stage1: POSIX tar archive (GNU)
 //now we see it is tar archive, so we use tar -xf (extract with force):
+bandit12@bandit:/tmp/my_workspace$ tar -xf stage1
+bandit12@bandit:/tmp/my_workspace$ ls
+data5.bin  data.txt  stage1
 
- 
+//we got a new file called data5.bin:
+bandit12@bandit:/tmp/my_workspace$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
 
+//another tar archive:
+bandit12@bandit:/tmp/my_workspace$ tar -xf data5.bin
+bandit12@bandit:/tmp/my_workspace$ ls
+data5.bin  data6.bin  data.txt  stage1
+bandit12@bandit:/tmp/my_workspace$ file data6.bin
+data6.bin: bzip2 compressed data, block size = 900k
 
+//new file data6.bin is bzip2:
+bandit12@bandit:/tmp/my_workspace$ mv data6.bin data6.bz
+bandit12@bandit:/tmp/my_workspace$ bunzip2 data6.bz
+bandit12@bandit:/tmp/my_workspace$ ls
+data5.bin  data6  data.txt  stage1
+//another data6:
+
+bandit12@bandit:/tmp/my_workspace$ file data6
+data6: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/my_workspace$ tar -xf data6
+bandit12@bandit:/tmp/my_workspace$ ls
+data5.bin  data6  data8.bin  data.txt  stage1
+
+//new file data8.bin:
+bandit12@bandit:/tmp/my_workspace$ file data8.bin
+data8.bin: gzip compressed data, was "data9.bin", last modified: Tue Oct 14 09:26:00 2025, max compression, from Unix, original size modulo 2^32 49
+
+bandit12@bandit:/tmp/my_workspace$ mv data8.bin data8.gz
+bandit12@bandit:/tmp/my_workspace$ gzip -d data8.gz
+bandit12@bandit:/tmp/my_workspace$ ls
+data5.bin  data6  data8  data.txt  stage1
+bandit12@bandit:/tmp/my_workspace$ file data8
+data8: ASCII text
+
+//and finaly ASCII text file :D
+bandit12@bandit:/tmp/my_workspace$ cat data8
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 ```
 # Level 13 ---> Level 14
 ```
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Look at the commands that logged you into previous bandit levels, and find out how to use the key for this level.
+
+
+
 ```
 
 # Level 14 ---> Level 15
