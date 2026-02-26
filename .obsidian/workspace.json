@@ -181,11 +181,14 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "06f1b3ef5293b57d",
   "lastOpenFiles": [
+    "OverTheWire/Bandit/TEMPLATE.md",
+    "OverTheWire/Bandit/Bandit_Writeup.md",
     "README.md",
     "Untitled.canvas",
     "Untitled.base",

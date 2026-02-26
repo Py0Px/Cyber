@@ -281,47 +281,146 @@ cat /etc/bandit_pass/bandit14
 
 ## Level 14 → 15
 
-**Goal:** *(to be completed)*
+**Goal:** *send current level password through net cat to get next password*
 
 **Commands:**
 ```bash
-
+nc localhost 30000
 ```
 
-**Key concept:** 
+**Key concept:** Using netcat to communicate with a listening service
 
-**Password:** 
+**Password:** 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
 
 ---
 
 ## Level 15 → 16
 
-**Goal:** *(to be completed)*
+**Goal:** *submit the password of the current level to **port 30001 on localhost** using SSL/TLS encryption.*
 
 **Commands:**
 ```bash
-
+openssl s_client localhost:30001 #connect to port using ssl encryption 
+# note: -crlf flag optional, only needed if server doesn't respond to input
 ```
 
-**Key concept:** 
+**Key concept:** Using OpenSSL to connect to a TLS/SSL encrypted service
 
-**Password:** 
+**Password:** kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
 
 ---
 
 ## Level 16 → 17
-
-**Goal:** *(to be completed)*
+**Goal:** *Find the port between 31000-32000 that accepts SSL and responds to the password, then retrieve the RSA private key.*
 
 **Commands:**
 ```bash
+nmap -sC -sV -p31000-32000 localhost  # scan ports in range, detect services and versions
+echo "kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx" | openssl s_client -connect localhost:31790 -ign_eof  # send password via SSL
+```
 
+**Key concept:** Using `nmap` to discover open ports and identify which one accepts SSL, then using OpenSSL to submit the password and retrieve an RSA private key for the next level.
+
+**Enumeration result — target port:**
+```bash
+31790/tcp open  ssl/unknown
+| ssl-cert: Subject: commonName=SnakeOil
+| Not valid before: 2024-06-10T03:59:50
+|_Not valid after:  2034-06-08T03:59:50
+|_ssl-date: TLS randomness does not represent time
+| fingerprint-strings:
+|   FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, LPDString, RTSPRequest, SIPOptions:
+|_    Wrong! Please enter the correct current password.
+```
+
+**Notes:**
+- Port 31790 was the correct one — only SSL port that wasn't just an echo service. The nmap output already reveals it's prompting for a password
+- `-connect` explicitly specifies the host:port instead of passing it as a positional argument, which is more reliable and avoids ambiguity
+- `-ign_eof` tells OpenSSL to **ignore end of file** — without it, once the piped input is fully sent the connection closes immediately before the server has time to respond with the key
+- The response is an RSA private key, not a password — save it to use for SSH into bandit17
+- Use `openssl s_client -help 2>&1 | less` to explore flags when manpages are lacking
+
+**Password:** EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
+
+---
+## Level 17 → 18
+**Goal:** The password for the next level is the only line changed between the 2 files: "passwords.old" and "passwords.new"
+
+**Commands:**
+```bash
+diff passwords.old passwords.new #difference between the files
+```
+**Output**:
+```bash
+42c42  #line 42 was changed in both files
+< BMIOFKM7CRSLI97voLp3TD80NAq5exxk  #old line that was replaced
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO  #new line which is the correct password
+```
+
+**Password:** x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+---
+## Level 18 → 19
+**Goal:** Get the password as soon as we establish a connection to the server
+
+**Commands:**
+```bash
+ssh bandit18@bandit.labs.overthewire.org -p 2220 "cat ~/readme" #tell ssh to execute the cat command on the file as soon as we connect to the server
+```
+**Output**: ```
+```bash
+cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8  #The password for next level
+```
+
+**Key concept:** Passing a command directly to `ssh` executes it immediately on the remote server before the shell fully loads — useful when `.bashrc` is configured to terminate the session.
+
+**Password:** cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+---
+## Level 19 → 20
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
 ```
 
 **Key concept:** 
 
-**Password:** 
+**Enumeration result:**
+```
+paste enumeration output here
+```
+
+**Notes:**
+- 
+
+**Password:**
 
 ---
+## Level X → X
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
+```
+
+**Key concept:** 
+
+**Enumeration result:**
+```
+paste enumeration output here
+```
+
+**Notes:**
+- 
+
+**Password:**
+
+---
+
+
 
 *Writeup by [Py0Px](https://github.com/Py0Px) | Vault: HackerMan*
