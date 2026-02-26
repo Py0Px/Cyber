@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "cb6cbfdeba5c3bcf",
+    "type": "split",
+    "children": [
+      {
+        "id": "9512b69d2c2fefc4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "06f1b3ef5293b57d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Bandit_Writeup"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ceee00e229c5ea27",
+    "type": "split",
+    "children": [
+      {
+        "id": "614a1fbf751c1836",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cf9f71c06f3ab60f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a9dd68a4f8d3cfa1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1774f9c263584ad2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fea8fb9f1ae00a2d",
+    "type": "split",
+    "children": [
+      {
+        "id": "c10a7487622caaa6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "514a8afa370c7670",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Bandit_Writeup"
+            }
+          },
+          {
+            "id": "e6d14b4ccea31fbc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Bandit_Writeup"
+            }
+          },
+          {
+            "id": "f794a02f6e278fb5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "bf91be69be988f36",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "59b562c4858f4172",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
+                "followCursor": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Bandit_Writeup"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "06f1b3ef5293b57d",
+  "lastOpenFiles": [
+    "README.md",
+    "Untitled.canvas",
+    "Untitled.base",
+    "Untitled 4.canvas",
+    "Untitled 3.canvas",
+    "Untitled 2.canvas",
+    "2026-02-26.md",
+    "Untitled 2.base",
+    "Untitled 1.canvas",
+    "Untitled 1.base"
+  ]
+}

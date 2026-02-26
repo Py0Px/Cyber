@@ -275,7 +275,7 @@ cat /etc/bandit_pass/bandit14
 
 **Key concept:** SSH supports key-based authentication with `-i <keyfile>`. Private keys are more secure than passwords.
 
-**Password:** *(retrieve with `cat /etc/bandit_pass/bandit14` after logging in)*
+**Password:** *MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS*
 
 ---
 
