@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bandit_Writeup"
+              "title": "README"
             }
           }
         ]
@@ -185,10 +185,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cf9f71c06f3ab60f",
+  "active": "06f1b3ef5293b57d",
   "lastOpenFiles": [
-    "OverTheWire/Bandit/TEMPLATE.md",
     "OverTheWire/Bandit/Bandit_Writeup.md",
+    "TryHackMe/README.md",
+    "OverTheWire/Bandit/TEMPLATE.md",
     "README.md",
     "Untitled.canvas",
     "Untitled.base",
