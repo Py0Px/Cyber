@@ -379,24 +379,29 @@ cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8  #The password for next level
 
 ---
 ## Level 19 → 20
-**Goal:** **
+**Goal:** Use the setuid binary in the home directory to read `/etc/bandit_pass/bandit20`
 
 **Commands:**
 ```bash
-command #description
+./bandit20-do  # run without args to see usage
+./bandit20-do cat /etc/bandit_pass/bandit20    # read password as bandit20
+```
+**Output**:
+```bash
+Run a command as another user.
+  Example: ./bandit20-do whoami
+
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
 ```
 
-**Key concept:** 
-
-**Enumeration result:**
-```
-paste enumeration output here
-```
+**Key concept:** `bandit20-do` has the **setuid bit** set and is owned by `bandit20`. Any command passed to it runs _as bandit20_, letting you read files owned by that user even though you're logged in as `bandit19`. This is exactly how tools like `sudo` work under the hood.
 
 **Notes:**
-- 
 
-**Password:**
+- Always run an unknown setuid binary without arguments first to understand its usage
+- The binary acts like a mini `sudo` — it elevates privilege for a single command In a real pen test, a misconfigured setuid binary like this would be an immediate privilege escalation path.
+
+**Password:** 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
 
 ---
 ## Level 20 → 21

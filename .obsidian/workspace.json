@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "OverTheWire/Bandit/Bandit_Writeup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Bandit_Writeup"
             }
           }
         ]
@@ -187,8 +187,8 @@
   },
   "active": "06f1b3ef5293b57d",
   "lastOpenFiles": [
-    "HackTheBox/Academy/tier0/README.md",
     "README.md",
+    "HackTheBox/Academy/tier0/README.md",
     "OverTheWire/Bandit/Bandit_Writeup.md",
     "TryHackMe/README.md",
     "OverTheWire/Bandit/TEMPLATE.md",
