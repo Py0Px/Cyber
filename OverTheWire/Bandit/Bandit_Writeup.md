@@ -397,14 +397,90 @@ Run a command as another user.
 **Key concept:** `bandit20-do` has the **setuid bit** set and is owned by `bandit20`. Any command passed to it runs _as bandit20_, letting you read files owned by that user even though you're logged in as `bandit19`. This is exactly how tools like `sudo` work under the hood.
 
 **Notes:**
-
 - Always run an unknown setuid binary without arguments first to understand its usage
 - The binary acts like a mini `sudo` — it elevates privilege for a single command In a real pen test, a misconfigured setuid binary like this would be an immediate privilege escalation path.
 
 **Password:** 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
 
 ---
-## Level 20 → 21
+## Level 20 → 21 
+
+**Goal:**  Use the setuid binary `suconnect` to get the next password by running a netcat listener with the current password.
+
+**Commands:**
+```bash
+echo "PREVIOUS PASSWORD" | nc -l -p 1234 & ./suconnect 1234 # start background listener and suconnect to the listener
+```
+
+**Output**:
+```bash
+[2] 40
+Connection received on 127.0.0.1 54354
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+bandit20@bandit:~$ EeoULMCra2q0dSkYj561DX7s1CpBuOBt # Next levels password
+```
+**Key concept:** Background processes (`&`), netcat listeners, setuid binaries, localhost networking.
+
+**Notes:**
+- `suconnect` reads the password from your listener and verifies it — if correct, sends back Level 21's password
+- `&` backgrounds the nc process so you can use the same terminal
+- Port number can be anything unused (1234, 4444, etc.)
+
+**Password:** EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+---
+## Level 21 → 22
+**Goal:** Find the password by examining cron jobs running as bandit22.
+
+**Commands:**
+```bash
+bandit21@bandit:~$ cd /etc/cron.d
+bandit21@bandit:/etc/cron.d$ ls
+behemoth4_cleanup  cronjob_bandit22  cronjob_bandit24  leviathan5_cleanup    otw-tmp-dir
+clean_tmp          cronjob_bandit23  e2scrub_all       manpage3_resetpw_job  sysstat
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cron
+cronjob_bandit22.sh  cronjob_bandit24.sh  cronjob_leviathan5
+cronjob_bandit23.sh  cronjob_behemoth4    crontab
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+bandit21@bandit:/etc/cron.d$
+```
+
+**Key concept:** Cron jobs, file permissions, `/etc/cron.d` enumeration
+
+**Notes:** 
+- Cron runs the script every minute as bandit22, writing its password to a world-readable `/tmp` file
+- `chmod 644` in the script is what makes the file readable by us
+- Always check `/etc/cron.d` and read the actual scripts — don't stop at just seeing the cron entry
+- The filename in `/tmp` is a hash — you'd never guess it, you have to read the script to find it
+
+**Password:** tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
+
+---
+## Level X → X
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
+```
+
+**Key concept:** 
+
+**Notes:**
+
+**Password:** 
+
+---
+## Level X → X
 **Goal:** **
 
 **Commands:**
@@ -420,12 +496,19 @@ paste enumeration output here
 ```
 
 **Notes:**
-- 
 
 **Password:**
 
 ---
 
-
+---
+---
+---
+---
+---
+---
+---
+---
+---
 
 *Writeup by [Py0Px](https://github.com/Py0Px) | Vault: Cyber*
