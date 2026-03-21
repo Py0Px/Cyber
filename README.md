@@ -17,12 +17,11 @@ My focus is on understanding systems deeply enough to break them ethically: enum
 
 ```
 📦 Cyber/
-├── 📁 OverTheWire/
-│   └── 📁 Bandit/         # Linux fundamentals CTF — level writeups & notes
-├── 📁 HackTheBox/
-│   └── 📁 Challenges/     # Challenge writeups (posted after retirement)
-├── 📁 Notes/              # (coming soon) Concepts, cheat sheets, tool references
-└── 📁 Tools/              # (coming soon) Custom scripts & utilities
+├── 📁 HackTheBox/         # CTF machines & challenges
+├── 📁 OverTheWire/        # Wargame writeups & notes
+├── 📁 PicoCTF/            # (coming soon) Challenge writeups
+├── 📁 Notes/              # (coming soon) Concepts & cheat sheets
+└── 📁 Tools/              # (coming soon) Scripts & utilities
 ```
 
 ---
@@ -32,9 +31,10 @@ My focus is on understanding systems deeply enough to break them ethically: enum
 | Platform | Focus Area | Status |
 |---|---|---|
 | [OverTheWire: Bandit](https://overthewire.org/wargames/bandit/) | Linux, SSH, file perms | 🟡 In Progress |
-| [HackTheBox](https://www.hackthebox.com/) | Pentesting, CTF challenges | 🟡 In Progress |
+| [PicoCTF](https://picoctf.org/) | General CTF skills | 🟡 In Progress |
 | [TryHackMe](https://tryhackme.com/) | Structured learning paths | 🔜 Planned |
-| [PicoCTF](https://picoctf.org/) | General CTF skills | 🔜 Planned |
+| [PortSwigger Academy](https://portswigger.net/web-security) | Web Exploitation Skills | 🔜 Planned |
+| [HackTheBox](https://www.hackthebox.com/) | Pentesting, CTF challenges | 🔜 Planned |
 
 ---
 
@@ -61,6 +61,12 @@ Post-Exploit:    linpeas · winpeas · pspy
 Password:        hashcat · john · hydra
 Scripting:       Python · Bash
 ```
+
+---
+
+## 🤝 Connect
+
+- 📧 **Email:** *idotz27@gmail.com*
 
 ---
 
