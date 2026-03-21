@@ -437,21 +437,26 @@ bandit20@bandit:~$ EeoULMCra2q0dSkYj561DX7s1CpBuOBt # Next levels password
 ```bash
 bandit21@bandit:~$ cd /etc/cron.d
 bandit21@bandit:/etc/cron.d$ ls
+---
 behemoth4_cleanup  cronjob_bandit22  cronjob_bandit24  leviathan5_cleanup    otw-tmp-dir
 clean_tmp          cronjob_bandit23  e2scrub_all       manpage3_resetpw_job  sysstat
+---
 bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+---
 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
 * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
 bandit21@bandit:/etc/cron.d$ cat /usr/bin/cron
 cronjob_bandit22.sh  cronjob_bandit24.sh  cronjob_leviathan5
 cronjob_bandit23.sh  cronjob_behemoth4    crontab
+---
 bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh
+---
 #!/bin/bash
 chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+---
 bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
-bandit21@bandit:/etc/cron.d$
 ```
 
 **Key concept:** Cron jobs, file permissions, `/etc/cron.d` enumeration
@@ -465,19 +470,68 @@ bandit21@bandit:/etc/cron.d$
 **Password:** tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
 
 ---
-## Level X → X
-**Goal:** **
+## Level 22 → 23
+
+**Goal:** Read a cron job script to figure out where another user's password is being stored, then retrieve it.
 
 **Commands:**
 ```bash
-command #description
+cat /etc/cron.d/cronjob_bandit23          # see what script runs as bandit23
+cat /usr/bin/cronjob_bandit23.sh          # read the script
+echo I am user bandit23 | md5sum | cut -d ' ' -f 1   # compute the target filename
+cat /tmp/<hash>                           # read the password
+```
+
+**Key concept:** Cron jobs run scripts automatically as specific users. By reading the script and simulating what it does (substituting `bandit23` for `whoami`), you can predict where it writes the password and retrieve it.
+
+**Notes:** The trick is recognizing that `whoami` returns the user the script runs _as_ (bandit23), not who you are (bandit22). You manually replicate the md5 hash calculation to find the temp file.
+
+**Password:** 0Zf11ioIjMVN551jX3CmStKLYqjk54Ga
+
+---
+## Level 23 → 24
+
+**Goal:** **Goal:** Write a script that bandit24's cron job will execute (it runs all scripts in `/var/spool/bandit24/foo` owned by bandit23), using it to exfiltrate bandit24's password.
+
+**Commands:**
+```bash
+bandit23@bandit:~$ cd /etc/cron.d
+bandit23@bandit:/etc/cron.d$ ls -la | grep "bandit"
+-rw-r--r--   1 root root   120 Oct 14 09:26 cronjob_bandit22
+-rw-r--r--   1 root root   122 Oct 14 09:26 cronjob_bandit23
+-rw-r--r--   1 root root   120 Oct 14 09:26 cronjob_bandit24
+bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24
+---output
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &> /dev/null
+
+bandit23@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit24.sh
+---output
+#!/bin/bash
+shopt -s nullglob
+myname=$(whoami)
+
+cd /var/spool/"$myname"/foo || exit
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." ] && [ "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" "./$i")"
+        if [ "${owner}" = "bandit23" ] && [ -f "$i" ]; then
+            timeout -s 9 60 "./$i"
+        fi
+        rm -rf "./$i"
+    fi
+done
 ```
 
 **Key concept:** 
 
-**Notes:**
+**Notes:** 
 
-**Password:** 
+**Password:**
 
 ---
 ## Level X → X
@@ -501,10 +555,65 @@ paste enumeration output here
 
 ---
 
+## Level X → X
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
+```
+
+**Key concept:** 
+
+**Enumeration result:**
+```
+paste enumeration output here
+```
+
+**Notes:**
+
+**Password:**
+
 ---
+## Level X → X
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
+```
+
+**Key concept:** 
+
+**Enumeration result:**
+```
+paste enumeration output here
+```
+
+**Notes:**
+
+**Password:**
+
 ---
----
----
+## Level X → X
+**Goal:** **
+
+**Commands:**
+```bash
+command #description
+```
+
+**Key concept:** 
+
+**Enumeration result:**
+```
+paste enumeration output here
+```
+
+**Notes:**
+
+**Password:**
+
 ---
 ---
 ---

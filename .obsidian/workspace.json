@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9512b69d2c2fefc4",
+        "id": "9ebd496f0391102c",
         "type": "tabs",
         "children": [
           {
-            "id": "06f1b3ef5293b57d",
+            "id": "f10d870e8f612dee",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -19,6 +19,20 @@
               },
               "icon": "lucide-file",
               "title": "Bandit_Writeup"
+            }
+          },
+          {
+            "id": "32c2b79b5aa68e62",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "OverTheWire/Bandit/bandit23 script.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "bandit23 script"
             }
           }
         ]
@@ -185,10 +199,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "06f1b3ef5293b57d",
+  "active": "f10d870e8f612dee",
   "lastOpenFiles": [
-    "OverTheWire/Bandit/TEMPLATE.md",
+    "OverTheWire/Bandit/bandit23 script.md",
     "OverTheWire/Bandit/Bandit_Writeup.md",
+    "OverTheWire/Bandit/TEMPLATE.md",
     "README.md",
     "HackTheBox/Academy/tier0/README.md",
     "TryHackMe/README.md",
