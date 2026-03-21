@@ -13,26 +13,6 @@ My focus is on understanding systems deeply enough to break them ethically: enum
 
 ---
 
-## 🗺️ Learning Roadmap
-
-### Current Focus
-- [ ] **OverTheWire: Bandit** — Linux fundamentals, file permissions, SSH, scripting
-- [ ] **HackTheBox: Starting Point** — Guided machines to build methodology
-- [ ] **Networking Fundamentals** — TCP/IP, DNS, HTTP, Wireshark
-
-### Up Next
-- [ ] **TryHackMe** — Jr Penetration Tester path
-- [ ] **HackTheBox: Easy Machines** — Enumeration, web exploitation, basic privesc
-- [ ] **Python for Hacking** — Custom tools, automation, socket programming
-
-### Later
-- [ ] **eJPT (eLearnSecurity)** — First offensive security certification
-- [ ] **Buffer overflows & binary exploitation basics**
-- [ ] **Active Directory attacks** — Kerberoasting, Pass-the-Hash, BloodHound
-- [ ] **OSCP Prep** — The long game
-
----
-
 ## 📂 Repository Structure
 
 ```
