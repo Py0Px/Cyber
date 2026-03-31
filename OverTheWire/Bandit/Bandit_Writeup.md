@@ -409,7 +409,7 @@ Run a command as another user.
 
 **Commands:**
 ```bash
-echo "PREVIOUS PASSWORD" | nc -l -p 1234 & ./suconnect 1234 # start background listener and suconnect to the listener
+echo "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO" | nc -l -p 1234 & ./suconnect 1234 # start background listener and suconnect to the listener
 ```
 
 **Output**:
