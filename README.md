@@ -32,7 +32,6 @@ My focus is on understanding systems deeply enough to break them ethically: enum
 |---|---|---|
 | [OverTheWire: Bandit](https://overthewire.org/wargames/bandit/) | Linux, SSH, file perms | 🟡 In Progress |
 | [PicoCTF](https://picoctf.org/) | General CTF skills | 🟡 In Progress |
-| [TryHackMe](https://tryhackme.com/) | Structured learning paths | 🔜 Planned |
 | [PortSwigger Academy](https://portswigger.net/web-security) | Web Exploitation Skills | 🔜 Planned |
 | [HackTheBox](https://www.hackthebox.com/) | Pentesting, CTF challenges | 🔜 Planned |
 
@@ -57,7 +56,7 @@ Every writeup in this repo follows a consistent structure:
 Reconnaissance:  nmap · gobuster · ffuf · theHarvester
 Web:             Burp Suite · sqlmap · nikto
 Exploitation:    Metasploit · searchsploit
-Post-Exploit:    linpeas · winpeas · pspy
+Post-Exploit:    linpeas · winpeas
 Password:        hashcat · john · hydra
 Scripting:       Python · Bash
 ```
